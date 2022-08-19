@@ -2,6 +2,7 @@ package Practica19_08_2022.imagen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class PanelImagen extends JPanel {
     private Imagen modelo;
@@ -22,6 +23,9 @@ public class PanelImagen extends JPanel {
         if(modelo ==null){
             return;
         }
-        modelo.dibujar(g);
+        BufferedImage rsm = new BufferedImage(modelo.getAncho(),modelo.getAlto(),BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = rsm.createGraphics();
+        modelo.dibujar(g2d);
+        g.drawImage(rsm,0,0,null);
     }
 }
